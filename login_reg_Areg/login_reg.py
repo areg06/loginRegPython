@@ -73,5 +73,7 @@ def Start():
         login()
     elif acc_req == 'n':
         reg()
+    else:
+        Start()
 
 Start()
