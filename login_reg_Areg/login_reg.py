@@ -74,6 +74,7 @@ def Start():
     elif acc_req == 'n':
         reg()
     else:
+        print("Type y or n")
         Start()
 
 Start()
