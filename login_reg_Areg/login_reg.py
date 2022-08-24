@@ -1,6 +1,7 @@
 import json
 
-filename = 'users.json'
+filename = 'C:/Users/aregk/OneDrive/Desktop/python cours/loginRegPython/login_reg_Areg/users.json'
+
 
 class User:
     def __init__(self, username, password, email, age, phone):
@@ -29,12 +30,14 @@ class PyRequest():
 
 def getUserInfo(request):
     if request.user:
-        print(request.user.items)
+        print(request.user.username, request.user.email)
+    else:
+        print(request.user)
 
 
 def login():
     username = input("Type yout username: ")
-    password = input("Type your password: ")
+    password = int(input("Type your password: "))
     request = PyRequest()
     request.local_login(username, password)
     getUserInfo(request)
@@ -43,21 +46,21 @@ def login():
 def reg():
     reg_req = input('Do you want to creat an account(y/n): ')
     if reg_req == 'y':
-        username = input('Type your username :')
-        password = input('Type your password :')
-        email = input('Type your email :')
-        age = input('Type your age :')
-        phone = input('Type your phone number :')
+        username = input('Type your username: ')
+        password = input('Type your password: ')
+        email = input('Type your email: ')
+        age = input('Type your age: ')
+        phone = input('Type your phone number: ')
         data = {
-            'username' : username,
-            'password' : password,
-            'email' : email,
-            'age' : age,
-            'phone' : phone 
+            'username': username,
+            'password': password,
+            'email': email,
+            'age': age,
+            'phone': phone
         }
-        with open(filename) as f:
+        with open(filename, "r") as f:
             fd = json.load(f)
-            fd.append[data]
+            fd.append(data)
             json.dump(fd, f, indent=4)
 
     elif reg_req == 'n':
@@ -76,5 +79,6 @@ def Start():
     else:
         print("Type y or n")
         Start()
+
 
 Start()
